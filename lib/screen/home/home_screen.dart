@@ -23,37 +23,38 @@ class HomePage extends GetView<HomeController> {
               ],
             ),
           ),
-          bottomNavigationBar: BottomNavigationBar(
-            backgroundColor: Color(0xFF222232),
-            onTap: controller.changeTabIndex,
-            currentIndex: controller.tabIndex,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            type: BottomNavigationBarType.fixed,
-            landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
-            selectedLabelStyle: const TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w800,
-                color: Color(0xFF246BFD)),
-            elevation: 8,
-            items: [
-              _bottomNavigationBarItem(
-                icon: IconlyLight.home,
-                label: 'Home',
-              ),
-              _bottomNavigationBarItem(
-                icon: IconlyLight.discovery,
-                label: 'Home',
-              ),
-              _bottomNavigationBarItem(
-                icon: IconlyLight.chart,
-                label: 'Home',
-              ),
-              _bottomNavigationBarItem(
-                icon: IconlyLight.profile,
-                label: 'Home',
-              ),
-            ],
+          bottomNavigationBar: SizedBox(
+            height: 96,
+            child: BottomNavigationBar(
+              backgroundColor: Color(0xFF222232),
+              onTap: controller.changeTabIndex,
+              currentIndex: controller.tabIndex,
+              selectedIconTheme: IconThemeData(color: Color(0xFF246BFD)),
+              unselectedIconTheme: IconThemeData(color: Color(0xFF65656B)),
+              showSelectedLabels: false,
+              showUnselectedLabels: false,
+              type: BottomNavigationBarType.fixed,
+              landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
+              elevation: 8,
+              items: [
+                _bottomNavigationBarItem(
+                  icon: IconlyLight.home,
+                  label: 'Home',
+                ),
+                _bottomNavigationBarItem(
+                  icon: IconlyLight.discovery,
+                  label: 'Home',
+                ),
+                _bottomNavigationBarItem(
+                  icon: IconlyLight.chart,
+                  label: 'Home',
+                ),
+                _bottomNavigationBarItem(
+                  icon: IconlyLight.profile,
+                  label: 'Home',
+                ),
+              ],
+            ),
           ),
         );
       },

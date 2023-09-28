@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:livescore/constant/fonts.dart';
 import 'package:livescore/screen/home/dashboard/components/dashboard_card.dart';
+import 'package:livescore/screen/home/dashboard/components/dashboard_category_card.dart';
 import 'package:livescore/screen/home/dashboard/dashboard_controller.dart';
 
 class DashboardPage extends GetView<DashboardController> {
@@ -53,7 +54,30 @@ class DashboardPage extends GetView<DashboardController> {
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 18, 0, 18),
             child: dashboardCard(),
-          )
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 14, 0, 18),
+            child: SizedBox(
+                height: 150,
+                child: ListView.builder(
+                  itemCount: 3,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return Obx(() {
+                      final categoryName = controller.categoryList[index];
+                      return GestureDetector(
+                        onTap: () {
+                          controller.handleCategorySelection(index);
+                        },
+                        child: dashboardCategoryCard(
+                          categoryName: categoryName,
+                          isSelected: controller.selectedIndex == index,
+                        ),
+                      );
+                    });
+                  },
+                )),
+          ),
         ],
       ),
     );
