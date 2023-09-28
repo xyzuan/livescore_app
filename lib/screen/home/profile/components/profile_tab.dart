@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:livescore/constant/fonts.dart';
 
@@ -25,10 +24,10 @@ class _ProfileTabState extends State<ProfileTab> {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
           decoration: ShapeDecoration(
             gradient: LinearGradient(
-              begin: Alignment(0.68, -0.74),
-              end: Alignment(-0.68, 0.74),
+              begin: const Alignment(0.68, -0.74),
+              end: const Alignment(-0.68, 0.74),
               colors: widget.isSelected
-                  ? [Color(0xFFF4A58A), Color(0xFFED6B4E)]
+                  ? [const Color(0xFFF4A58A), const Color(0xFFED6B4E)]
                   : [Colors.transparent, Colors.transparent],
             ),
             shape: RoundedRectangleBorder(
@@ -36,7 +35,7 @@ class _ProfileTabState extends State<ProfileTab> {
             ),
           ),
           child: Padding(
-              padding: EdgeInsets.all(0),
+              padding: const EdgeInsets.all(0),
               child: Text(
                 widget.tabName,
                 style: TextStyle(

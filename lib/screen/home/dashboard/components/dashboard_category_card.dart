@@ -19,7 +19,7 @@ class _DashboardCategoryCardState extends State<dashboardCategoryCard> {
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
       opacity: widget.isSelected ? 1.0 : 0.5,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 0, 14, 0),
@@ -27,11 +27,11 @@ class _DashboardCategoryCardState extends State<dashboardCategoryCard> {
           width: 130,
           decoration: ShapeDecoration(
             gradient: LinearGradient(
-              begin: Alignment(0.68, -0.74),
-              end: Alignment(-0.68, 0.74),
+              begin: const Alignment(0.68, -0.74),
+              end: const Alignment(-0.68, 0.74),
               colors: widget.isSelected
-                  ? [Color(0xFFF4A58A), Color(0xFFED6B4E)]
-                  : [Color(0xFF222232), Color(0xFF222232)],
+                  ? [const Color(0xFFF4A58A), const Color(0xFFED6B4E)]
+                  : [const Color(0xFF222232), const Color(0xFF222232)],
             ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
@@ -45,7 +45,7 @@ class _DashboardCategoryCardState extends State<dashboardCategoryCard> {
               children: [
                 Image.asset(
                     'assets/images/${widget.categoryName.toLowerCase()}_icon.png'),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(
                   widget.categoryName,
                   style: TextStyle(

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:livescore/routes/pages_names.dart';
@@ -25,7 +24,7 @@ class _MainAppState extends State<MainApp> {
         );
       },
       theme: ThemeData(
-        scaffoldBackgroundColor: Color(0xFF181829),
+        scaffoldBackgroundColor: const Color(0xFF181829),
       ),
     );
   }

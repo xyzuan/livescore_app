@@ -8,7 +8,8 @@ class AppNavigationBar extends StatelessWidget {
   final int currentIndex;
   final Function(int) onTap;
 
-  AppNavigationBar({required this.currentIndex, required this.onTap});
+  const AppNavigationBar(
+      {super.key, required this.currentIndex, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class AppNavigationBar extends StatelessWidget {
             color: Colors.black.withOpacity(0.3),
             blurRadius: 20,
             spreadRadius: 1,
-            offset: Offset(0, 0),
+            offset: const Offset(0, 0),
           ),
         ],
       ),
@@ -32,8 +33,8 @@ class AppNavigationBar extends StatelessWidget {
             backgroundColor: Colors.transparent,
             onTap: onTap,
             currentIndex: currentIndex,
-            activeColor: Color(0xFF246BFD),
-            inactiveColor: Color(0xFF65656B),
+            activeColor: const Color(0xFF246BFD),
+            inactiveColor: const Color(0xFF65656B),
             items: [
               _bottomNavigationBarItem(
                 icon: IconlyLight.home,

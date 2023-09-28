@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:livescore/screen/home/dashboard/dashboard_screen.dart';
@@ -19,7 +18,7 @@ class HomePage extends GetView<HomeController> {
             body: SafeArea(
               child: IndexedStack(
                 index: controller.tabIndex,
-                children: [
+                children: const [
                   DashboardPage(),
                   ExplorePage(),
                   StandingsPage(),

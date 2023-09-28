@@ -7,7 +7,7 @@ class itemIconCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 36,
       height: 36,
       child: Stack(
@@ -16,7 +16,7 @@ class itemIconCard extends StatelessWidget {
           Container(
             width: 36,
             height: 36,
-            decoration: ShapeDecoration(
+            decoration: const ShapeDecoration(
               color: Color(0xFF222232),
               shape: OvalBorder(
                 side: BorderSide(

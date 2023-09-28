@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
@@ -10,7 +9,7 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
-      CircleAvatar(
+      const CircleAvatar(
         radius: 80,
         backgroundColor: Color(0xFF222232),
         backgroundImage: AssetImage('assets/images/jody.png'),
@@ -22,7 +21,7 @@ class ProfileView extends StatelessWidget {
           Container(
             width: 42,
             height: 42,
-            decoration: ShapeDecoration(
+            decoration: const ShapeDecoration(
               gradient: LinearGradient(
                 begin: Alignment(0.68, -0.74),
                 end: Alignment(-0.68, 0.74),
@@ -33,7 +32,7 @@ class ProfileView extends StatelessWidget {
               ),
             ),
           ),
-          Icon(
+          const Icon(
             IconlyLight.edit,
             color: Colors.white,
           )

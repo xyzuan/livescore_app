@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:livescore/constant/fonts.dart';
@@ -24,8 +23,8 @@ class ProfileTabList extends StatelessWidget {
               Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.all(9),
-                    decoration: ShapeDecoration(
+                    padding: const EdgeInsets.all(9),
+                    decoration: const ShapeDecoration(
                         color: Color(0xFF222232), shape: CircleBorder()),
                     child: Icon(
                       icon,
@@ -56,7 +55,7 @@ class ProfileTabList extends StatelessWidget {
                     Text(
                       summary,
                       style: TextStyle(
-                        color: Color(0xFFC4C4C4),
+                        color: const Color(0xFFC4C4C4),
                         fontSize: 14,
                         fontFamily: AppFonts().primaryFont,
                         fontWeight: FontWeight.w600,
@@ -66,8 +65,8 @@ class ProfileTabList extends StatelessWidget {
                   ],
                 ),
               ),
-              Spacer(),
-              Icon(
+              const Spacer(),
+              const Icon(
                 IconlyLight.arrow_right_2,
                 color: Colors.white,
               )
@@ -76,8 +75,8 @@ class ProfileTabList extends StatelessWidget {
         ),
         Container(
           height: 1,
-          margin: EdgeInsets.fromLTRB(76, 0, 42, 0),
-          decoration: BoxDecoration(color: Color(0xFF222232)),
+          margin: const EdgeInsets.fromLTRB(76, 0, 42, 0),
+          decoration: const BoxDecoration(color: Color(0xFF222232)),
         ),
       ],
     );

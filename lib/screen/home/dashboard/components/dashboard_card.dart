@@ -12,7 +12,7 @@ class dashboardCard extends StatelessWidget {
       width: 319,
       height: 161,
       decoration: ShapeDecoration(
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             begin: Alignment(0.97, -0.25),
             end: Alignment(-0.97, 0.25),
             colors: [Color(0xFF246BFD), Color(0xFF0C0C69)],

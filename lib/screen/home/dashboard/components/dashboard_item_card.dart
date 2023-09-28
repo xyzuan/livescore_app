@@ -24,7 +24,8 @@ class dashboardItemCard extends StatelessWidget {
         height: 68,
         width: double.infinity,
         decoration: BoxDecoration(
-            color: Color(0xFF2A2A3C), borderRadius: BorderRadius.circular(16)),
+            color: const Color(0xFF2A2A3C),
+            borderRadius: BorderRadius.circular(16)),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(18, 0, 0, 0),
           child: Row(
@@ -100,11 +101,11 @@ class dashboardItemCard extends StatelessWidget {
                   ],
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Container(
                 width: 47,
                 alignment: Alignment.center,
-                decoration: ShapeDecoration(
+                decoration: const ShapeDecoration(
                   color: Color(0xFF222232),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(

@@ -3,12 +3,12 @@ import 'package:get/get.dart';
 import 'package:livescore/screen/home/explore/explore_controller.dart';
 
 class ExplorePage extends GetView<ExploreController> {
-  ExplorePage({super.key});
+  const ExplorePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF181829),
+      backgroundColor: const Color(0xFF181829),
       body: ListView(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.only(
@@ -16,7 +16,7 @@ class ExplorePage extends GetView<ExploreController> {
           left: 20,
           right: 20,
         ),
-        children: <Widget>[
+        children: const <Widget>[
           Text(
             'Explore Page',
             style: TextStyle(color: Colors.white),
