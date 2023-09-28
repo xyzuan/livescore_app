@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:livescore/screen/home/dashboard/dashboard_screen.dart';
 import 'package:livescore/screen/home/home_controller.dart';
+import 'package:livescore/screen/home/profile/profile_screen.dart';
 import 'package:livescore/widgets/navigation_bar.dart';
 
 class HomePage extends GetView<HomeController> {
@@ -20,7 +21,7 @@ class HomePage extends GetView<HomeController> {
                   DashboardPage(),
                   DashboardPage(),
                   DashboardPage(),
-                  DashboardPage(),
+                  ProfilePage(),
                 ],
               ),
             ),
