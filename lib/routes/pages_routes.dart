@@ -3,6 +3,8 @@ import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:livescore/routes/pages_names.dart';
 import 'package:livescore/screen/auth/auth_binding.dart';
 import 'package:livescore/screen/auth/auth_screen.dart';
+import 'package:livescore/screen/home/home_binding.dart';
+import 'package:livescore/screen/home/home_screen.dart';
 import 'package:livescore/screen/splash/splash_binding.dart';
 import 'package:livescore/screen/splash/splash_screen.dart';
 
@@ -19,6 +21,13 @@ class PageRoutes {
       name: PageName.auth,
       page: () => const AuthPage(),
       binding: AuthBinding(),
+      transition: Transition.cupertino,
+      transitionDuration: const Duration(milliseconds: 250),
+    ),
+    GetPage(
+      name: PageName.home,
+      page: () => const HomePage(),
+      binding: HomeBinding(),
       transition: Transition.cupertino,
       transitionDuration: const Duration(milliseconds: 250),
     ),

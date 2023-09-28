@@ -8,13 +8,11 @@ class SplashPage extends GetView<SplashController> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(children: [
-        SvgPicture.asset(
-          "assets/images/bottom_wave.svg",
-          fit: BoxFit.cover,
-        ),
-      ]),
-    );
+    return Column(children: [
+      SvgPicture.asset(
+        "assets/images/bottom_wave.svg",
+        fit: BoxFit.cover,
+      ),
+    ]);
   }
 }
