@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:livescore/screen/home/dashboard/dashboard_screen.dart';
+import 'package:livescore/screen/home/explore/explore_screen.dart';
 import 'package:livescore/screen/home/home_controller.dart';
 import 'package:livescore/screen/home/profile/profile_screen.dart';
+import 'package:livescore/screen/home/standings/standings_screen.dart';
 import 'package:livescore/widgets/navigation_bar.dart';
 
 class HomePage extends GetView<HomeController> {
@@ -19,8 +21,8 @@ class HomePage extends GetView<HomeController> {
                 index: controller.tabIndex,
                 children: [
                   DashboardPage(),
-                  DashboardPage(),
-                  DashboardPage(),
+                  ExplorePage(),
+                  StandingsPage(),
                   ProfilePage(),
                 ],
               ),
