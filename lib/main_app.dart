@@ -24,6 +24,9 @@ class _MainAppState extends State<MainApp> {
           child: child ?? Container(),
         );
       },
+      theme: ThemeData(
+        scaffoldBackgroundColor: Color(0xFF181829),
+      ),
     );
   }
 }

@@ -5,7 +5,9 @@ import 'package:iconly/iconly.dart';
 import 'package:livescore/constant/fonts.dart';
 import 'package:livescore/screen/home/dashboard/components/dashboard_card.dart';
 import 'package:livescore/screen/home/dashboard/components/dashboard_category_card.dart';
+import 'package:livescore/screen/home/dashboard/components/dashboard_item_card.dart';
 import 'package:livescore/screen/home/dashboard/dashboard_controller.dart';
+import 'package:livescore/widgets/item_headers.dart';
 
 class DashboardPage extends GetView<DashboardController> {
   DashboardPage({super.key});
@@ -78,6 +80,41 @@ class DashboardPage extends GetView<DashboardController> {
                   },
                 )),
           ),
+          Container(
+            child: Column(children: [
+              itemHeaders(
+                leagueName: 'La Liga',
+                region: 'Spain',
+              ),
+              dashboardItemCard(
+                status: 'ht',
+                teamOne: 'Barcelona',
+                scoreOne: 2,
+                teamTwo: 'Real Madrid',
+                scoreTwo: 0,
+              ),
+            ]),
+          ),
+          Container(
+            child: Column(children: [
+              itemHeaders(
+                leagueName: 'Premier League',
+                region: 'England',
+              ),
+              dashboardItemCard(
+                  status: 'ht',
+                  teamOne: 'Aston Villa',
+                  scoreOne: 2,
+                  teamTwo: 'Liverpool',
+                  scoreTwo: 3),
+              dashboardItemCard(
+                  status: 'ft',
+                  teamOne: 'Aston Villa',
+                  scoreOne: 2,
+                  teamTwo: 'Liverpool',
+                  scoreTwo: 3),
+            ]),
+          )
         ],
       ),
     );
