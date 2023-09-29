@@ -29,30 +29,33 @@ class AppNavigationBar extends StatelessWidget {
       child: ClipRect(
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-          child: CupertinoTabBar(
-            backgroundColor: Colors.transparent,
-            onTap: onTap,
-            currentIndex: currentIndex,
-            activeColor: const Color(0xFF246BFD),
-            inactiveColor: const Color(0xFF65656B),
-            items: [
-              _bottomNavigationBarItem(
-                icon: IconlyLight.home,
-                label: 'Home',
-              ),
-              _bottomNavigationBarItem(
-                icon: IconlyLight.discovery,
-                label: 'Explore',
-              ),
-              _bottomNavigationBarItem(
-                icon: IconlyLight.chart,
-                label: 'Standings',
-              ),
-              _bottomNavigationBarItem(
-                icon: IconlyLight.profile,
-                label: 'My Profile',
-              ),
-            ],
+          child: SizedBox(
+            child: CupertinoTabBar(
+              backgroundColor: Colors.transparent,
+              onTap: onTap,
+              currentIndex: currentIndex,
+              activeColor: Color.fromARGB(255, 60, 125, 255),
+              inactiveColor: const Color(0xFF65656B),
+              items: [
+                _bottomNavigationBarItem(
+                  icon: currentIndex == 0 ? IconlyBold.home : IconlyLight.home,
+                ),
+                _bottomNavigationBarItem(
+                  icon: currentIndex == 1
+                      ? IconlyBold.discovery
+                      : IconlyLight.discovery,
+                ),
+                _bottomNavigationBarItem(
+                  icon:
+                      currentIndex == 2 ? IconlyBold.chart : IconlyLight.chart,
+                ),
+                _bottomNavigationBarItem(
+                  icon: currentIndex == 3
+                      ? IconlyBold.profile
+                      : IconlyLight.profile,
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -60,9 +63,8 @@ class AppNavigationBar extends StatelessWidget {
   }
 }
 
-_bottomNavigationBarItem({IconData? icon, String? label}) {
+_bottomNavigationBarItem({IconData? icon}) {
   return BottomNavigationBarItem(
     icon: Icon(icon),
-    label: label,
   );
 }

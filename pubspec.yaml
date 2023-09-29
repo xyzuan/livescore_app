@@ -23,7 +23,12 @@ flutter:
 
   assets:
     - assets/svgs/
-    - assets/images/
+    - assets/images/categories/
+    - assets/images/categories_title/
+    - assets/images/clubs/
+    - assets/images/dummy/
+    - assets/images/illustrations/
+    - assets/images/regions/
 
   fonts:
     - family: PlusJakartaSans

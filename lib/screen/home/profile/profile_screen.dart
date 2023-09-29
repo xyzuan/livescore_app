@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:livescore/constant/fonts.dart';
-import 'package:livescore/screen/home/profile/components/profile_tab.dart';
 import 'package:livescore/screen/home/profile/components/profile_tab_list.dart';
 import 'package:livescore/screen/home/profile/profile_controller.dart';
+import 'package:livescore/widgets/item_tab.dart';
 
 import 'components/profile_view.dart';
 
@@ -62,7 +62,7 @@ class ProfilePage extends GetView<ProfileController> {
                           onTap: () {
                             controller.handleTabSelection(index);
                           },
-                          child: ProfileTab(
+                          child: ItemTab(
                             tabName: profileTab,
                             isSelected: controller.selectedIndex == index,
                           ),

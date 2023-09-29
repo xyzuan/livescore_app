@@ -16,12 +16,7 @@ class ExplorePage extends GetView<ExploreController> {
           left: 20,
           right: 20,
         ),
-        children: const <Widget>[
-          Text(
-            'Explore Page',
-            style: TextStyle(color: Colors.white),
-          )
-        ],
+        children: [],
       ),
     );
   }

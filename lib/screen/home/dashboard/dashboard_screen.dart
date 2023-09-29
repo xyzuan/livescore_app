@@ -11,8 +11,6 @@ import 'package:livescore/widgets/item_headers.dart';
 class DashboardPage extends GetView<DashboardController> {
   const DashboardPage({super.key});
 
-  // final AuthController authController = Get.put(AuthController());
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,16 +93,16 @@ class DashboardPage extends GetView<DashboardController> {
             ),
             dashboardItemCard(
                 status: 'ht',
-                teamOne: 'Aston Villa',
+                teamOne: 'Liverpool',
                 scoreOne: 2,
-                teamTwo: 'Liverpool',
+                teamTwo: 'Aston Villa',
                 scoreTwo: 3),
             dashboardItemCard(
                 status: 'ft',
                 teamOne: 'Aston Villa',
-                scoreOne: 2,
+                scoreOne: 5,
                 teamTwo: 'Liverpool',
-                scoreTwo: 3),
+                scoreTwo: 2),
           ])
         ],
       ),

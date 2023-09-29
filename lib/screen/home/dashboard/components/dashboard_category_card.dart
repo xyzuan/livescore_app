@@ -44,7 +44,7 @@ class _DashboardCategoryCardState extends State<dashboardCategoryCard> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(
-                    'assets/images/${widget.categoryName.toLowerCase()}_icon.png'),
+                    'assets/images/categories/${widget.categoryName.toLowerCase()}_icon.png'),
                 const SizedBox(height: 8),
                 Text(
                   widget.categoryName,

@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 
 class itemIconCard extends StatelessWidget {
   final String teamName;
+  final double size;
 
-  const itemIconCard({super.key, required this.teamName});
+  const itemIconCard({super.key, required this.teamName, required this.size});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 36,
-      height: 36,
+      width: size,
+      height: size,
       child: Stack(
         alignment: Alignment.center,
         children: [
           Container(
-            width: 36,
-            height: 36,
+            width: size,
+            height: size,
             decoration: const ShapeDecoration(
               color: Color(0xFF222232),
               shape: OvalBorder(
@@ -28,12 +29,12 @@ class itemIconCard extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 22,
-            height: 22,
+            width: size / 2,
+            height: size / 2,
             child: Stack(
               children: [
                 Image.asset(
-                    'assets/images/${teamName.replaceAll(' ', '').toLowerCase()}.png'),
+                    'assets/images/clubs/${teamName.replaceAll(' ', '').toLowerCase()}.png'),
               ],
             ),
           ),

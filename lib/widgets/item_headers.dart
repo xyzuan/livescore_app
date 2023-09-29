@@ -20,7 +20,7 @@ class itemHeaders extends StatelessWidget {
         children: [
           Row(
             children: [
-              Image.asset('assets/images/${region.toLowerCase()}.png'),
+              Image.asset('assets/images/regions/${region.toLowerCase()}.png'),
               Padding(
                 padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
                 child: Column(

@@ -30,7 +30,7 @@ class dashboardCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/football_title.png',
+                    'assets/images/categories_title/football_title.png',
                     alignment: Alignment.bottomLeft,
                   ),
                   Padding(
@@ -58,7 +58,7 @@ class dashboardCard extends StatelessWidget {
           ),
           Expanded(
             child: Image.asset(
-              'assets/images/dash_ill.png',
+              'assets/images/illustrations/dash_ill.png',
               alignment: Alignment.bottomRight,
             ),
           )

@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:livescore/constant/fonts.dart';
 
-class ProfileTab extends StatefulWidget {
+class ItemTab extends StatefulWidget {
   final String tabName;
   final bool isSelected;
 
-  const ProfileTab({
+  const ItemTab({
     super.key,
     required this.tabName,
     this.isSelected = false,
   });
 
   @override
-  _ProfileTabState createState() => _ProfileTabState();
+  _ItemTabState createState() => _ItemTabState();
 }
 
-class _ProfileTabState extends State<ProfileTab> {
+class _ItemTabState extends State<ItemTab> {
   @override
   Widget build(BuildContext context) {
     return Row(

@@ -12,7 +12,7 @@ class ProfileView extends StatelessWidget {
       const CircleAvatar(
         radius: 80,
         backgroundColor: Color(0xFF222232),
-        backgroundImage: AssetImage('assets/images/jody.png'),
+        backgroundImage: AssetImage('assets/images/dummy/jody.png'),
       ),
       Positioned(
         bottom: 0,

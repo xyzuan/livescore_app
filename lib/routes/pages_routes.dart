@@ -1,5 +1,4 @@
-import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:get/get_navigation/src/routes/transitions_type.dart';
+import 'package:get/get.dart';
 import 'package:livescore/routes/pages_names.dart';
 import 'package:livescore/screen/auth/auth_binding.dart';
 import 'package:livescore/screen/auth/auth_screen.dart';
@@ -11,6 +10,7 @@ import 'package:livescore/screen/home/profile/profile_binding.dart';
 import 'package:livescore/screen/home/profile/profile_screen.dart';
 import 'package:livescore/screen/home/standings/standings_binding.dart';
 import 'package:livescore/screen/home/standings/standings_screen.dart';
+import 'package:livescore/screen/match/match_screen.dart';
 import 'package:livescore/screen/splash/splash_binding.dart';
 import 'package:livescore/screen/splash/splash_screen.dart';
 
@@ -55,6 +55,12 @@ class PageRoutes {
       name: PageName.profile,
       page: () => const ProfilePage(),
       binding: ProfileBinding(),
+      transition: Transition.cupertino,
+      transitionDuration: const Duration(milliseconds: 250),
+    ),
+    GetPage(
+      name: PageName.match,
+      page: () => MatchPage(),
       transition: Transition.cupertino,
       transitionDuration: const Duration(milliseconds: 250),
     ),

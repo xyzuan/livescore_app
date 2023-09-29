@@ -16,7 +16,7 @@ class AuthPage extends GetView<AuthController> {
     return Material(
       color: CustomColor.mainBackground,
       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Image.asset("assets/images/auth_ill.png"),
+        Image.asset("assets/images/illustrations/auth_ill.png"),
         Column(
           children: [
             Padding(
@@ -121,7 +121,7 @@ class AuthPage extends GetView<AuthController> {
                                           width: double.infinity,
                                           child: ElevatedButton(
                                             onPressed: () =>
-                                                Get.offAndToNamed('/home'),
+                                                Get.offAllNamed('/home'),
                                             style: ElevatedButton.styleFrom(
                                               padding: const EdgeInsets.all(20),
                                               backgroundColor:
