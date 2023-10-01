@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:livescore/constant/fonts.dart';
+import 'package:livescore/constant/sports.dart';
 import 'package:livescore/screen/home/dashboard/components/dashboard_card.dart';
-import 'package:livescore/screen/home/dashboard/components/dashboard_category_card.dart';
+import 'package:livescore/widgets/category_card.dart';
 import 'package:livescore/screen/home/dashboard/components/dashboard_item_card.dart';
 import 'package:livescore/screen/home/dashboard/dashboard_controller.dart';
 import 'package:livescore/widgets/item_headers.dart';
@@ -55,18 +56,21 @@ class DashboardPage extends GetView<DashboardController> {
             child: SizedBox(
                 height: 150,
                 child: ListView.builder(
-                  itemCount: 3,
+                  itemCount: sportList.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return Obx(() {
-                      final categoryName = controller.categoryList[index];
+                      final categoryName = sportList[index];
                       return GestureDetector(
                         onTap: () {
                           controller.handleCategorySelection(index);
                         },
-                        child: dashboardCategoryCard(
-                          categoryName: categoryName,
-                          isSelected: controller.selectedIndex == index,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 18.0),
+                          child: CategoryCard(
+                            categoryName: categoryName,
+                            isSelected: controller.selectedIndex == index,
+                          ),
                         ),
                       );
                     });

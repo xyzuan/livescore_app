@@ -91,16 +91,18 @@ class AuthPage extends GetView<AuthController> {
                                       Padding(
                                         padding: const EdgeInsets.fromLTRB(
                                             0, 18, 0, 0),
-                                        child: appTextField(
+                                        child: AppTextField(
                                             text: 'Email',
-                                            icon: IconlyLight.message),
+                                            icon: IconlyLight.message,
+                                            color: Color(0xFF181829)),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.fromLTRB(
                                             0, 18, 0, 0),
-                                        child: appTextField(
+                                        child: AppTextField(
                                             text: 'Password',
-                                            icon: IconlyLight.password),
+                                            icon: IconlyLight.password,
+                                            color: Color(0xFF181829)),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.fromLTRB(

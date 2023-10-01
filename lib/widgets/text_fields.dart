@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:livescore/constant/fonts.dart';
 
-Widget appTextField({required String text, required IconData icon}) {
+Widget AppTextField(
+    {required String text, required IconData icon, required Color color}) {
   return Card(
-    color: const Color(0xFF181829),
+    color: color,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
     child: SizedBox(
       height: 64,
