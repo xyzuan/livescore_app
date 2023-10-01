@@ -3,6 +3,9 @@ import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:livescore/constant/fonts.dart';
 import 'package:livescore/screen/home/profile/components/profile_tab_list.dart';
+import 'package:livescore/screen/home/profile/menu/profile_activity.dart';
+import 'package:livescore/screen/home/profile/menu/profile_info.dart';
+import 'package:livescore/screen/home/profile/menu/profile_settings.dart';
 import 'package:livescore/screen/home/profile/profile_controller.dart';
 import 'package:livescore/widgets/item_tab.dart';
 
@@ -71,28 +74,21 @@ class ProfilePage extends GetView<ProfileController> {
                     },
                   )),
               Container(
-                padding: const EdgeInsets.fromLTRB(0, 18, 0, 0),
-                child: const ProfileTabList(
-                  icon: IconlyLight.profile,
-                  title: 'Name',
-                  summary: 'Jody Yuantoro',
-                ),
+                height: 600,
+                child: Obx(() =>
+                    ListView(padding: EdgeInsets.only(top: 24), children: [
+                      Container(
+                        child: IndexedStack(
+                          index: controller.selectedIndex.toInt(),
+                          children: [
+                            ProfileInfo(),
+                            ProfileActivity(),
+                            ProfileSettings()
+                          ],
+                        ),
+                      ),
+                    ])),
               ),
-              const ProfileTabList(
-                icon: IconlyLight.message,
-                title: 'Email',
-                summary: 'xyzuannihboss@gmail.com',
-              ),
-              const ProfileTabList(
-                icon: IconlyLight.call,
-                title: 'Phone',
-                summary: '+62 812 789 567',
-              ),
-              const ProfileTabList(
-                icon: IconlyLight.location,
-                title: 'Address',
-                summary: 'Malang, Jawa Timur, Indonesia',
-              )
             ],
           )
         ],
