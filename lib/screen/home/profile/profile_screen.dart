@@ -29,7 +29,7 @@ class ProfilePage extends GetView<ProfileController> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const ProfileView(),
+              ProfileView(),
               Padding(
                 padding: const EdgeInsets.all(24.0),
                 child: Column(
