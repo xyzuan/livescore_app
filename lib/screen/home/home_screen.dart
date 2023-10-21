@@ -27,8 +27,10 @@ class HomePage extends GetView<HomeController> {
               ),
             ),
             bottomNavigationBar: AppNavigationBar(
-                currentIndex: controller.tabIndex,
-                onTap: controller.changeTabIndex));
+              currentIndex: controller.tabIndex,
+              onTap: controller.changeTabIndex,
+              isAdmin: controller.isAdmin,
+            ));
       },
     );
   }

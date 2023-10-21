@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconly/iconly.dart';
 import 'package:livescore/constant/fonts.dart';
-import 'package:livescore/screen/home/profile/components/profile_tab_list.dart';
 import 'package:livescore/screen/home/profile/menu/profile_activity.dart';
 import 'package:livescore/screen/home/profile/menu/profile_info.dart';
 import 'package:livescore/screen/home/profile/menu/profile_settings.dart';

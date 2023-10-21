@@ -15,6 +15,7 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      // locale: const Locale('en', 'EN'),
       initialRoute: PageName.auth,
       getPages: PageRoutes.pages,
       builder: (BuildContext context, child) {

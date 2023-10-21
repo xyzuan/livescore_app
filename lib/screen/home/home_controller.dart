@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   static var data = Get.arguments;
-
+  var isAdmin = true;
   var tabIndex = 0;
 
   static void updateData() {

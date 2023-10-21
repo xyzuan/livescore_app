@@ -28,12 +28,16 @@ class itemIconCard extends StatelessWidget {
               ),
             ),
           ),
-          // Stack(
-          //   children: [
-          //     Image.asset(
-          //         'assets/images/clubs/${teamName.replaceAll(' ', '').toLowerCase()}.png'),
-          //   ],
-          // ),
+          SizedBox(
+            width: size / 2,
+            height: size / 2,
+            child: Stack(
+              children: [
+                Image.asset(
+                    'assets/images/clubs/${teamName.replaceAll(' ', '').toLowerCase()}.png'),
+              ],
+            ),
+          ),
         ],
       ),
     );

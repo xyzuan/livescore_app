@@ -37,7 +37,6 @@ class dashboardItemCard extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(0, 14, 0, 0),
         child: Container(
           height: 68,
-          width: double.infinity,
           decoration: BoxDecoration(
               color: const Color(0xFF2A2A3C),
               borderRadius: BorderRadius.circular(16)),
@@ -120,7 +119,7 @@ class dashboardItemCard extends StatelessWidget {
                 ),
                 const Spacer(),
                 Container(
-                  width: 47,
+                  width: 42,
                   alignment: Alignment.center,
                   decoration: const ShapeDecoration(
                     color: Color(0xFF222232),

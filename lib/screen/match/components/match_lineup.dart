@@ -9,9 +9,7 @@ class MatchLineup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Row(
-        children: [],
-      ),
+      child: Stack(children: [Image.asset('assets/images/dummy/field.png')]),
     );
   }
 }

@@ -7,9 +7,13 @@ import 'package:iconly/iconly.dart';
 class AppNavigationBar extends StatelessWidget {
   final int currentIndex;
   final Function(int) onTap;
+  final bool isAdmin;
 
   const AppNavigationBar(
-      {super.key, required this.currentIndex, required this.onTap});
+      {super.key,
+      required this.currentIndex,
+      required this.onTap,
+      required this.isAdmin});
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +58,11 @@ class AppNavigationBar extends StatelessWidget {
                       ? IconlyBold.profile
                       : IconlyLight.profile,
                 ),
+                if (isAdmin)
+                  _bottomNavigationBarItem(
+                    icon:
+                        currentIndex == 4 ? IconlyBold.edit : IconlyLight.edit,
+                  ),
               ],
             ),
           ),

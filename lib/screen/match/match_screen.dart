@@ -87,7 +87,7 @@ class MatchPage extends GetView<MatchController> {
                 )),
           ),
           Container(
-            height: 600,
+            height: 800,
             child: Obx(
                 () => ListView(padding: EdgeInsets.only(top: 24), children: [
                       Container(
