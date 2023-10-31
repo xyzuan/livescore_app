@@ -53,7 +53,7 @@ class ExplorePage extends GetView<ExploreController> {
                 )),
           ),
           Container(
-            height: 300, // Set the height as needed
+            height: null,
             child: Obx(
               () => controller.isLoading.value
                   ? Center(
@@ -61,14 +61,16 @@ class ExplorePage extends GetView<ExploreController> {
                     )
                   : controller.articleModel?.article?.isNotEmpty == true
                       ? ListView.builder(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
                           itemCount: controller.articleModel!.article!.length,
                           itemBuilder: (context, index) {
                             final article =
                                 controller.articleModel!.article![index];
                             return NewsItem(
-                              headline: article.title ?? 'No Title',
-                              date: 'Test',
-                              img: article.image ?? 'No Image',
+                              headline: article.title.toString(),
+                              date: article.dateCreated,
+                              img: article.image.toString(),
                             );
                           },
                         )

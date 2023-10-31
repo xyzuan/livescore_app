@@ -21,20 +21,26 @@ class Article {
   Article({
     required this.id,
     required this.image,
-    this.title,
+    required this.title,
     required this.body,
+    required this.externalLink,
+    required this.dateCreated,
   });
 
-  String? id;
+  int? id;
   String? image;
   String? title;
   String? body;
+  String? externalLink;
+  DateTime? dateCreated;
 
   Article.fromJson(Map<String, dynamic> json) {
-    id = json['image_url'];
-    image = json['name'];
+    id = json['id'];
+    image = json['image'];
     title = json['title'];
-    body = json['permalink'];
+    body = json['body'];
+    externalLink = json['externalLink'];
+    dateCreated = json['dateCreated'];
   }
 
   Map<String, dynamic> toJson() {
@@ -43,6 +49,8 @@ class Article {
     _data['image'] = image;
     _data['title'] = title;
     _data['body'] = body;
+    _data['externalLink'] = externalLink;
+    _data['dateCreated'] = dateCreated;
     return _data;
   }
 }

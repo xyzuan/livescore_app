@@ -5,7 +5,7 @@ import 'package:livescore/constant/fonts.dart';
 
 class NewsItem extends StatelessWidget {
   final String headline;
-  final String date;
+  final DateTime? date;
   final String img;
 
   const NewsItem(
@@ -25,7 +25,7 @@ class NewsItem extends StatelessWidget {
               width: 64,
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(8)),
-              child: Text(img)),
+              child: Image.network(img, fit: BoxFit.cover,)),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18),
             child: Container(
@@ -47,7 +47,7 @@ class NewsItem extends StatelessWidget {
                   SizedBox(
                     height: 8,
                   ),
-                  Text(date,
+                  Text(date.toString(),
                       style: TextStyle(
                           color: Colors.white,
                           fontFamily: AppFonts().primaryFont,
