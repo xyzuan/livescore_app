@@ -52,32 +52,30 @@ class ExplorePage extends GetView<ExploreController> {
                   },
                 )),
           ),
-          Column(
-            children: [
-              NewsItem(
-                img: 'img',
-                headline: 'Roumor Has It: Lampard’s position under threat, ...',
-                date: '04 JAN 2021, 14:16',
-              ),
-              NewsItem(
-                img: 'img',
-                headline:
-                    'Artrta sees ‘natural leader’ Tierney as a future, ...',
-                date: '04 JAN 2021, 05:30',
-              ),
-              NewsItem(
-                img: 'img',
-                headline:
-                    'Athletic Bilbao to appoint Marcelino as coach until, ...',
-                date: '04 JAN 2021, 09:23',
-              ),
-              NewsItem(
-                img: 'img',
-                headline:
-                    'Barcelona suffer too much late in games, says Ter Stegen',
-                date: '04 JAN 2021, 06:06',
-              ),
-            ],
+          Container(
+            height: 300, // Set the height as needed
+            child: Obx(
+              () => controller.isLoading.value
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : controller.articleModel?.article?.isNotEmpty == true
+                      ? ListView.builder(
+                          itemCount: controller.articleModel!.article!.length,
+                          itemBuilder: (context, index) {
+                            final article =
+                                controller.articleModel!.article![index];
+                            return NewsItem(
+                              headline: article.title ?? 'No Title',
+                              date: 'Test',
+                              img: article.image ?? 'No Image',
+                            );
+                          },
+                        )
+                      : Center(
+                          child: Text('No articles available'),
+                        ),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(8.0, 18, 8.0, 18),
