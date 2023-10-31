@@ -32,7 +32,7 @@ class Article {
   String? title;
   String? body;
   String? externalLink;
-  DateTime? dateCreated;
+  String? dateCreated;
 
   Article.fromJson(Map<String, dynamic> json) {
     id = json['id'];

@@ -1,3 +1,3 @@
 class APIS {
-  static String mainApi = 'http://10.3.1.163:3000';
+  static String mainApi = 'http://192.168.1.131:3000';
 }

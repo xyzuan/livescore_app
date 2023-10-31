@@ -69,8 +69,10 @@ class ExplorePage extends GetView<ExploreController> {
                                 controller.articleModel!.article![index];
                             return NewsItem(
                               headline: article.title.toString(),
-                              date: article.dateCreated,
+                              date: article.dateCreated.toString(),
                               img: article.image.toString(),
+                              body: article.body.toString(),
+                              externalLink: article.externalLink.toString(),
                             );
                           },
                         )
