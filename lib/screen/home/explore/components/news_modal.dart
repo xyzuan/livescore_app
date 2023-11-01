@@ -17,7 +17,7 @@ Future<void> newsModal(BuildContext context, String image, String headline,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(28), topRight: Radius.circular(28)),
-          color: const Color(0xFF222232),
+          color: Colors.white,
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.only(

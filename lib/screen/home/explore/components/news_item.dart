@@ -3,6 +3,7 @@ import 'package:iconly/iconly.dart';
 import 'package:livescore/constant/colors.dart';
 import 'package:livescore/constant/fonts.dart';
 import 'package:livescore/screen/home/explore/components/news_modal.dart';
+import 'package:intl/intl.dart';
 
 class NewsItem extends StatelessWidget {
   final String headline;
@@ -21,6 +22,12 @@ class NewsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final inputDateFormat = DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+    final outputDateFormat = DateFormat("EEEE, d MMMM yyyy");
+
+    final inputDate = inputDateFormat.parse(date);
+    final outputDateString = outputDateFormat.format(inputDate);
+
     return GestureDetector(
       onTap: () => newsModal(context, img, headline, body, externalLink),
       child: Container(
@@ -57,7 +64,7 @@ class NewsItem extends StatelessWidget {
                       SizedBox(
                         height: 8,
                       ),
-                      Text(date.toString(),
+                      Text(outputDateString,
                           style: TextStyle(
                               color: Colors.white,
                               fontFamily: AppFonts().primaryFont,
