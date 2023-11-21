@@ -9,7 +9,7 @@ import 'package:livescore/widgets/text_fields.dart';
 bool rememberMe = false;
 
 class AuthPage extends GetView<AuthController> {
-  const AuthPage({Key? key}) : super(key: key);
+  AuthPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -92,6 +92,8 @@ class AuthPage extends GetView<AuthController> {
                                         padding: const EdgeInsets.fromLTRB(
                                             0, 18, 0, 0),
                                         child: AppTextField(
+                                            controller:
+                                                controller.emailController,
                                             text: 'Email',
                                             icon: IconlyLight.message,
                                             color: Color(0xFF181829)),
@@ -100,6 +102,8 @@ class AuthPage extends GetView<AuthController> {
                                         padding: const EdgeInsets.fromLTRB(
                                             0, 18, 0, 0),
                                         child: AppTextField(
+                                            controller:
+                                                controller.passwordController,
                                             text: 'Password',
                                             icon: IconlyLight.password,
                                             color: Color(0xFF181829)),
@@ -122,8 +126,19 @@ class AuthPage extends GetView<AuthController> {
                                         child: SizedBox(
                                           width: double.infinity,
                                           child: ElevatedButton(
-                                            onPressed: () =>
-                                                Get.offAllNamed('/home'),
+                                            onPressed:
+                                                controller.isLoading.value
+                                                    ? null
+                                                    : () {
+                                                        controller.loginUser(
+                                                          controller
+                                                              .emailController
+                                                              .text,
+                                                          controller
+                                                              .passwordController
+                                                              .text,
+                                                        );
+                                                      },
                                             style: ElevatedButton.styleFrom(
                                               padding: const EdgeInsets.all(20),
                                               backgroundColor:
@@ -133,16 +148,19 @@ class AuthPage extends GetView<AuthController> {
                                                     BorderRadius.circular(16),
                                               ),
                                             ),
-                                            child: Text(
-                                              'Sign in',
-                                              style: TextStyle(
-                                                fontFamily:
-                                                    AppFonts().primaryFont,
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w600,
-                                                color: Colors.white,
-                                              ),
-                                            ),
+                                            child: controller.isLoading.value
+                                                ? CircularProgressIndicator()
+                                                : Text(
+                                                    'Sign in',
+                                                    style: TextStyle(
+                                                      fontFamily: AppFonts()
+                                                          .primaryFont,
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
                                           ),
                                         ),
                                       )
@@ -171,16 +189,119 @@ class AuthPage extends GetView<AuthController> {
                       ),
                     ),
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.fromLTRB(39, 0, 0, 0),
-                    child: Text(
-                      'Sign Up',
-                      style: TextStyle(
-                        color: Color(0xFFC4C4C4),
-                        fontSize: 18,
-                        fontFamily: 'Source Sans Pro',
-                        fontWeight: FontWeight.w400,
-                        height: 0,
+                    child: GestureDetector(
+                      onTap: () {
+                        showModalBottomSheet(
+                          context: context,
+                          backgroundColor: const Color(0xFF222232),
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(42.0)),
+                          ),
+                          builder: (context) {
+                            return SingleChildScrollView(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.fromLTRB(24, 18, 24, 24),
+                                child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 18, 0, 8),
+                                        child: Text(
+                                          'Sign up',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontFamily: AppFonts().primaryFont,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 28,
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 18, 0, 0),
+                                        child: AppTextField(
+                                            controller:
+                                                controller.emailController,
+                                            text: 'Email',
+                                            icon: IconlyLight.message,
+                                            color: Color(0xFF181829)),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 18, 0, 0),
+                                        child: AppTextField(
+                                            controller:
+                                                controller.passwordController,
+                                            text: 'Password',
+                                            icon: IconlyLight.password,
+                                            color: Color(0xFF181829)),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            8, 18, 8, 0),
+                                        child: SizedBox(
+                                          width: double.infinity,
+                                          child: ElevatedButton(
+                                            onPressed:
+                                                controller.isLoading.value
+                                                    ? null
+                                                    : () {
+                                                        controller.registerUser(
+                                                          controller
+                                                              .emailController
+                                                              .text,
+                                                          controller
+                                                              .passwordController
+                                                              .text,
+                                                        );
+                                                      },
+                                            style: ElevatedButton.styleFrom(
+                                              padding: const EdgeInsets.all(20),
+                                              backgroundColor:
+                                                  const Color(0xFF246BFD),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(16),
+                                              ),
+                                            ),
+                                            child: controller.isLoading.value
+                                                ? CircularProgressIndicator()
+                                                : Text(
+                                                    'Sign up',
+                                                    style: TextStyle(
+                                                      fontFamily: AppFonts()
+                                                          .primaryFont,
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                          ),
+                                        ),
+                                      )
+                                    ]),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                      child: Text(
+                        'Sign Up',
+                        style: TextStyle(
+                          color: Color(0xFFC4C4C4),
+                          fontSize: 18,
+                          fontFamily: 'Source Sans Pro',
+                          fontWeight: FontWeight.w400,
+                          height: 0,
+                        ),
                       ),
                     ),
                   )
