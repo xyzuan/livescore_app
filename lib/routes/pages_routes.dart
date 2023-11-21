@@ -25,7 +25,7 @@ class PageRoutes {
     ),
     GetPage(
       name: PageName.auth,
-      page: () => const AuthPage(),
+      page: () => AuthPage(),
       binding: AuthBinding(),
       transition: Transition.cupertino,
       transitionDuration: const Duration(milliseconds: 250),

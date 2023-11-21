@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "79208154692",
+    "project_id": "livescore-a3917",
+    "storage_bucket": "livescore-a3917.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:79208154692:android:599e2f584cf513285bde11",
+        "android_client_info": {
+          "package_name": "com.example.livescore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzLtGJdjYgsI22tBJp2QSV5rQ_ipEwU5I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
