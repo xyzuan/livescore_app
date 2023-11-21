@@ -120,6 +120,19 @@ class AuthPage extends GetView<AuthController> {
                                                   color: Colors.white)),
                                         ),
                                       ),
+                                      ElevatedButton.icon(
+                                        icon: const Icon(Icons.facebook),
+                                        label: const Text(""),
+                                        onPressed: () {
+                                          controller.signInWithFacebook();
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(32.0),
+                                          ),
+                                        ),
+                                      ),
                                       Padding(
                                         padding: const EdgeInsets.fromLTRB(
                                             8, 18, 8, 0),
