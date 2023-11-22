@@ -65,4 +65,12 @@ class AuthController extends GetxController {
       isLoading.value = false;
     }
   }
+
+  void logout() {
+    _prefs.remove('user_token');
+    isLogged.value = false;
+    _auth.signOut();
+
+    Get.offAllNamed('/auth');
+  }
 }
