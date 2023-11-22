@@ -133,6 +133,29 @@ class AuthPage extends GetView<AuthController> {
                                           ),
                                         ),
                                       ),
+                                      ElevatedButton.icon(
+                                        icon: Image.network(
+                                          'https://upload.wikimedia.org/wikipedia/commons/5/57/X_logo_2023_%28white%29.png', // Ganti dengan URL gambar Twitter Anda
+                                          height:
+                                              24.0, // Sesuaikan ukuran gambar
+                                          width: 24.0,
+                                          color: Colors
+                                              .white, // Sesuaikan warna gambar
+                                        ),
+                                        label:
+                                            const Text(""),
+                                        onPressed: () {
+                                          controller.signInWithTwitter();
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          primary: Colors
+                                              .blue, // Sesuaikan warna tombol
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(32.0),
+                                          ),
+                                        ),
+                                      ),
                                       Padding(
                                         padding: const EdgeInsets.fromLTRB(
                                             8, 18, 8, 0),
