@@ -23,6 +23,8 @@ dependencies:
   path_provider: ^2.1.1
   shared_preferences: ^2.2.2
   webview_flutter: ^4.4.1
+  flutter_facebook_auth: ^6.0.3
+  twitter_login: ^4.0.1
 
 dev_dependencies:
   flutter_test:
