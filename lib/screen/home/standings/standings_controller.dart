@@ -1,4 +1,5 @@
 import 'package:appwrite/appwrite.dart';
+import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:livescore/services/appwrite_handler.dart';
@@ -10,6 +11,7 @@ class StandingsController extends GetxController {
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController imageController = TextEditingController();
   final TextEditingController dateController = TextEditingController();
+  RxList<Document> documents = <Document>[].obs;
 
   void handleCategorySelection(int index) {
     selectedIndex.value = index;
@@ -19,7 +21,6 @@ class StandingsController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // appwrite
     databases = Databases(dbController.client);
   }
 
@@ -31,9 +32,9 @@ class StandingsController extends GetxController {
         collectionId: "656ddef5f14921f91a3d",
         data: map,
         permissions: [
-          Permission.read(Role.any()), // Set read permission to "any"
-          Permission.update(Role.any()), // Set update permission to "any"
-          Permission.delete(Role.any()), // Set delete permission to "any"
+          Permission.read(Role.any()),
+          Permission.update(Role.any()),
+          Permission.delete(Role.any()),
         ],
       );
       print("DatabaseController:: inputName $result");
@@ -49,6 +50,18 @@ class StandingsController extends GetxController {
         ),
         contentPadding: const EdgeInsets.only(top: 5, left: 15, right: 15),
       );
+    }
+  }
+
+  Future<void> fetchData() async {
+    try {
+      // Replace 'collectionId' with the ID of your collection
+      var response = await databases!.listDocuments(
+          collectionId: "656ddef5f14921f91a3d",
+          databaseId: "656ddee609d4eb81f0c7");
+      documents.assignAll(response.documents);
+    } catch (e) {
+      print('Error fetching data: $e');
     }
   }
 }

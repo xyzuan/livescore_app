@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
@@ -8,6 +10,8 @@ import 'package:livescore/widgets/category_card.dart';
 import 'package:livescore/widgets/text_fields.dart';
 
 import '../../../constant/sports.dart';
+
+final StandingsController standingsController = Get.find();
 
 class StandingsPage extends GetView<StandingsController> {
   const StandingsPage({super.key});
@@ -57,51 +61,51 @@ class StandingsPage extends GetView<StandingsController> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                TextField(
-                  controller: controller.nameController,
-                  decoration: InputDecoration(
-                    labelText: 'Enter your name',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                SizedBox(height: 20),
-                TextField(
-                  controller: controller.descriptionController,
-                  decoration: InputDecoration(
-                    labelText: 'Enter description',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                SizedBox(height: 20),
-                TextField(
-                  controller: controller.imageController,
-                  decoration: InputDecoration(
-                    labelText: 'Enter your image',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                SizedBox(height: 20),
-                TextFormField(
-                  controller: controller.dateController,
-                  decoration: InputDecoration(
-                    labelText: 'Enter your date',
-                    border: OutlineInputBorder(),
-                  ),
-                  onTap: () async {
-                    DateTime? selectedDate = await showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime(2000),
-                      lastDate: DateTime(2101),
-                    );
+                // TextField(
+                //   controller: controller.nameController,
+                //   decoration: InputDecoration(
+                //     labelText: 'Enter your name',
+                //     border: OutlineInputBorder(),
+                //   ),
+                // ),
+                // SizedBox(height: 20),
+                // TextField(
+                //   controller: controller.descriptionController,
+                //   decoration: InputDecoration(
+                //     labelText: 'Enter description',
+                //     border: OutlineInputBorder(),
+                //   ),
+                // ),
+                // SizedBox(height: 20),
+                // TextField(
+                //   controller: controller.imageController,
+                //   decoration: InputDecoration(
+                //     labelText: 'Enter your image',
+                //     border: OutlineInputBorder(),
+                //   ),
+                // ),
+                // SizedBox(height: 20),
+                // TextFormField(
+                //   controller: controller.dateController,
+                //   decoration: InputDecoration(
+                //     labelText: 'Enter your date',
+                //     border: OutlineInputBorder(),
+                //   ),
+                //   onTap: () async {
+                //     DateTime? selectedDate = await showDatePicker(
+                //       context: context,
+                //       initialDate: DateTime.now(),
+                //       firstDate: DateTime(2000),
+                //       lastDate: DateTime(2101),
+                //     );
 
-                    if (selectedDate != null) {
-                      // Handle the selected date here, you can update the controller or perform other actions
-                      controller.dateController.text =
-                          DateFormat('yyyy-MM-dd').format(selectedDate);
-                    }
-                  },
-                ),
+                //     if (selectedDate != null) {
+                //       // Handle the selected date here, you can update the controller or perform other actions
+                //       controller.dateController.text =
+                //           DateFormat('yyyy-MM-dd').format(selectedDate);
+                //     }
+                //   },
+                // ),
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
@@ -123,6 +127,34 @@ class StandingsPage extends GetView<StandingsController> {
                   },
                   child: Text('Store Name'),
                 ),
+                ElevatedButton(
+                  onPressed: () {
+                    controller.fetchData();
+                  },
+                  child: Text('Fetch Data'),
+                ),
+                Container(
+                  height: 500,
+                  child: Obx(
+                    () => ListView.builder(
+                      itemCount: controller.documents.length,
+                      itemBuilder: (context, index) {
+                        var document = controller.documents[index];
+
+                        return ListTile(
+                          title: Text(
+                            "${jsonEncode(document.data["name"]).replaceAll('"', '')}",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          subtitle: Text(
+                            "${jsonEncode(document.data["description"]).replaceAll('"', '')}",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                )
               ],
             ),
           ),
