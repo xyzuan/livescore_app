@@ -1,15 +1,21 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:livescore/constant/fonts.dart';
 import 'package:livescore/screen/home/admin/admin_controller.dart';
 import 'package:livescore/screen/home/admin/components/admin_news_item.dart';
+import 'package:livescore/utils/uuid.dart';
 
 import 'package:livescore/widgets/date_fields.dart';
 import 'package:livescore/widgets/text_fields.dart';
 
 class AdminPage extends GetView<AdminController> {
-  const AdminPage({super.key});
+  const AdminPage({Key? key, this.pickedFile}) : super(key: key);
+
+  final File? pickedFile;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +31,8 @@ class AdminPage extends GetView<AdminController> {
                 borderRadius: BorderRadius.vertical(top: Radius.circular(42.0)),
               ),
               builder: (context) {
+                final id = generateUUID();
+
                 return SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(24, 18, 24, 24),
@@ -62,14 +70,6 @@ class AdminPage extends GetView<AdminController> {
                           ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 18, 0, 0),
-                            child: AppTextField(
-                                controller: controller.imageController,
-                                text: 'Image Link',
-                                icon: IconlyLight.arrow_right,
-                                color: Color(0xFF181829)),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 18, 0, 0),
                             child: AppDateField(
                                 context: context,
                                 controller: controller.dateController,
@@ -83,20 +83,75 @@ class AdminPage extends GetView<AdminController> {
                               width: double.infinity,
                               child: ElevatedButton(
                                 onPressed: () {
+                                  showModalBottomSheet(
+                                      context: context,
+                                      backgroundColor: const Color(0xFF222232),
+                                      builder: (context) {
+                                        return SingleChildScrollView(
+                                          child: Padding(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                24, 18, 24, 24),
+                                            child: Row(children: [
+                                              IconButton(
+                                                  color: Colors.white,
+                                                  onPressed: () async {
+                                                    await controller.takeImage(
+                                                        ImageSource.gallery,
+                                                        pickedFile,
+                                                        id);
+                                                  },
+                                                  icon: Icon(IconlyBold.image)),
+                                              IconButton(
+                                                  color: Colors.white,
+                                                  onPressed: () async {
+                                                    await controller.takeImage(
+                                                        ImageSource.camera,
+                                                        pickedFile,
+                                                        id);
+                                                  },
+                                                  icon: Icon(IconlyBold.camera))
+                                            ]),
+                                          ),
+                                        );
+                                      });
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  padding: const EdgeInsets.all(20),
+                                  backgroundColor: const Color(0xFF246BFD),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
+                                ),
+                                child: Text(
+                                  'Upload Image',
+                                  style: TextStyle(
+                                    fontFamily: AppFonts().primaryFont,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(8, 18, 8, 0),
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: ElevatedButton(
+                                onPressed: () {
                                   if (controller
                                           .nameController.text.isNotEmpty &&
                                       controller.descriptionController.text
                                           .isNotEmpty &&
-                                      controller
-                                          .imageController.text.isNotEmpty &&
                                       controller
                                           .dateController.text.isNotEmpty) {
                                     Map<String, dynamic> data = {
                                       'name': controller.nameController.text,
                                       'description':
                                           controller.descriptionController.text,
-                                      'img': controller.imageController.text,
-                                      'date': controller.dateController.text
+                                      'date': controller.dateController.text,
+                                      'imgId': id
                                     };
                                     controller.db.inputArticle(data);
                                   } else {
@@ -155,7 +210,7 @@ class AdminPage extends GetView<AdminController> {
                               id: article.$id.toString(),
                               headline: article.data["name"].toString(),
                               date: article.data["date"].toString(),
-                              img: article.data["img"].toString(),
+                              imgId: article.data["imgId"].toString(),
                               body: article.data["description"].toString(),
                               externalLink: article.data["img"].toString(),
                             );

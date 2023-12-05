@@ -26,6 +26,7 @@ dependencies:
   webview_flutter: ^4.4.1
   flutter_facebook_auth: ^6.0.3
   twitter_login: ^4.0.1
+  uuid: ^4.2.1
 
 dev_dependencies:
   flutter_test:

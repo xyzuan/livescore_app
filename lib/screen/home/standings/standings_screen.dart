@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
-import 'package:intl/intl.dart';
 import 'package:livescore/constant/colors.dart';
 import 'package:livescore/screen/home/standings/standings_controller.dart';
 import 'package:livescore/widgets/category_card.dart';

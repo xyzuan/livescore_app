@@ -65,7 +65,7 @@ class ExplorePage extends GetView<ExploreController> {
                         return NewsItem(
                           headline: article.data["name"].toString(),
                           date: article.data["date"].toString(),
-                          img: article.data["img"].toString(),
+                          imgId: article.data["imgId"].toString(),
                           body: article.data["description"].toString(),
                           externalLink: article.data["img"].toString(),
                         );

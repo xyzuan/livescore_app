@@ -1,14 +1,17 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:livescore/constant/colors.dart';
 import 'package:livescore/constant/fonts.dart';
 import 'package:livescore/screen/home/explore/components/news_modal.dart';
-import 'package:intl/intl.dart';
+import 'package:livescore/services/appwrite_handler.dart';
 
 class NewsItem extends StatelessWidget {
   final String headline;
   final String date;
-  final String img;
+  final String imgId;
   final String body;
   final String externalLink;
 
@@ -16,20 +19,21 @@ class NewsItem extends StatelessWidget {
       {super.key,
       required this.headline,
       required this.date,
-      required this.img,
+      required this.imgId,
       required this.body,
       required this.externalLink});
 
   @override
   Widget build(BuildContext context) {
-    final inputDateFormat = DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-    final outputDateFormat = DateFormat("EEEE, d MMMM yyyy");
+    final ClientController db = Get.put(ClientController());
+    // final inputDateFormat = DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+    // final outputDateFormat = DateFormat("EEEE, d MMMM yyyy");
 
     // final inputDate = inputDateFormat.parse(date);
     // final outputDateString = outputDateFormat.format(inputDate);
 
     return GestureDetector(
-      onTap: () => newsModal(context, img, headline, body, externalLink),
+      onTap: () => newsModal(context, imgId, headline, body, externalLink),
       child: Container(
         decoration: BoxDecoration(color: Colors.transparent),
         child: Padding(
@@ -41,7 +45,22 @@ class NewsItem extends StatelessWidget {
                   width: 64,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(24.0),
-                    child: Image.network(img, fit: BoxFit.cover),
+                    child: FutureBuilder<List<int>>(
+                      future: db.getImage(imgId),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return CircularProgressIndicator();
+                        } else if (snapshot.hasError) {
+                          return Text('Error: ${snapshot.error}');
+                        } else if (!snapshot.hasData || snapshot.data == null) {
+                          return Text('No image data available');
+                        } else {
+                          return Image.memory(
+                              Uint8List.fromList(snapshot.data!));
+                        }
+                      },
+                    ),
                   )),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 18),
