@@ -25,8 +25,8 @@ class NewsItem extends StatelessWidget {
     final inputDateFormat = DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
     final outputDateFormat = DateFormat("EEEE, d MMMM yyyy");
 
-    final inputDate = inputDateFormat.parse(date);
-    final outputDateString = outputDateFormat.format(inputDate);
+    // final inputDate = inputDateFormat.parse(date);
+    // final outputDateString = outputDateFormat.format(inputDate);
 
     return GestureDetector(
       onTap: () => newsModal(context, img, headline, body, externalLink),
@@ -64,7 +64,7 @@ class NewsItem extends StatelessWidget {
                       SizedBox(
                         height: 8,
                       ),
-                      Text(outputDateString,
+                      Text(date,
                           style: TextStyle(
                               color: Colors.white,
                               fontFamily: AppFonts().primaryFont,

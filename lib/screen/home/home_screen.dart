@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:livescore/screen/home/admin/admin_screen.dart';
 import 'package:livescore/screen/home/dashboard/dashboard_screen.dart';
 import 'package:livescore/screen/home/explore/explore_screen.dart';
 import 'package:livescore/screen/home/home_controller.dart';
@@ -23,6 +24,7 @@ class HomePage extends GetView<HomeController> {
                   ExplorePage(),
                   StandingsPage(),
                   ProfilePage(),
+                  AdminPage()
                 ],
               ),
             ),

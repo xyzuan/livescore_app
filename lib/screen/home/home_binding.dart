@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:livescore/screen/home/admin/admin_controller.dart';
 import 'package:livescore/screen/home/dashboard/dashboard_controller.dart';
 import 'package:livescore/screen/home/explore/explore_controller.dart';
 import 'package:livescore/screen/home/home_controller.dart';
@@ -13,5 +14,6 @@ class HomeBinding extends Bindings {
     Get.lazyPut<ExploreController>(() => ExploreController());
     Get.lazyPut<StandingsController>(() => StandingsController());
     Get.lazyPut<ProfileController>(() => ProfileController());
+    Get.lazyPut<AdminController>(() => AdminController());
   }
 }

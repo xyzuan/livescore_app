@@ -6,6 +6,7 @@ class PageName {
   static const explore = '/explore';
   static const standings = '/standings';
   static const profile = '/profile';
+  static const admin = '/admin';
 
   static const match = '/match';
 }

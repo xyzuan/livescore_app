@@ -55,30 +55,25 @@ class ExplorePage extends GetView<ExploreController> {
           Container(
             height: null,
             child: Obx(
-              () => controller.isLoading.value
-                  ? Center(
-                      child: CircularProgressIndicator(),
+              () => controller.db.articles.isNotEmpty == true
+                  ? ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: controller.db.articles.length,
+                      itemBuilder: (context, index) {
+                        final article = controller.db.articles[index];
+                        return NewsItem(
+                          headline: article.data["name"].toString(),
+                          date: article.data["date"].toString(),
+                          img: article.data["img"].toString(),
+                          body: article.data["description"].toString(),
+                          externalLink: article.data["img"].toString(),
+                        );
+                      },
                     )
-                  : controller.articleModel?.article?.isNotEmpty == true
-                      ? ListView.builder(
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemCount: controller.articleModel!.article!.length,
-                          itemBuilder: (context, index) {
-                            final article =
-                                controller.articleModel!.article![index];
-                            return NewsItem(
-                              headline: article.title.toString(),
-                              date: article.dateCreated.toString(),
-                              img: article.image.toString(),
-                              body: article.body.toString(),
-                              externalLink: article.externalLink.toString(),
-                            );
-                          },
-                        )
-                      : Center(
-                          child: Text('No articles available'),
-                        ),
+                  : Center(
+                      child: Text('No articles available'),
+                    ),
             ),
           ),
           Padding(

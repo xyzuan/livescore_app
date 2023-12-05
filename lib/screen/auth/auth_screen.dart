@@ -120,46 +120,46 @@ class AuthPage extends GetView<AuthController> {
                                                   color: Colors.white)),
                                         ),
                                       ),
-                                      Row(
-                                        children: [
-                                          ElevatedButton.icon(
-                                            icon: const Icon(Icons.facebook),
-                                            label: const Text(
-                                                "Login with Facebook"),
-                                            onPressed: () {
-                                              controller.signInWithFacebook();
-                                            },
-                                            style: ElevatedButton.styleFrom(
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(32.0),
-                                              ),
-                                            ),
-                                          ),
-                                          ElevatedButton.icon(
-                                            icon: Image.network(
-                                              'https://upload.wikimedia.org/wikipedia/commons/5/57/X_logo_2023_%28white%29.png', // Ganti dengan URL gambar Twitter Anda
-                                              height:
-                                                  24.0, // Sesuaikan ukuran gambar
-                                              width: 24.0,
-                                              color: Colors
-                                                  .white, // Sesuaikan warna gambar
-                                            ),
-                                            label: const Text("Login with X"),
-                                            onPressed: () {
-                                              controller.signInWithTwitter();
-                                            },
-                                            style: ElevatedButton.styleFrom(
-                                              primary: Colors
-                                                  .blue, // Sesuaikan warna tombol
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(32.0),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                      // Row(
+                                      //   children: [
+                                      //     ElevatedButton.icon(
+                                      //       icon: const Icon(Icons.facebook),
+                                      //       label: const Text(
+                                      //           "Login with Facebook"),
+                                      //       onPressed: () {
+                                      //         controller.signInWithFacebook();
+                                      //       },
+                                      //       style: ElevatedButton.styleFrom(
+                                      //         shape: RoundedRectangleBorder(
+                                      //           borderRadius:
+                                      //               BorderRadius.circular(32.0),
+                                      //         ),
+                                      //       ),
+                                      //     ),
+                                      //     ElevatedButton.icon(
+                                      //       icon: Image.network(
+                                      //         'https://upload.wikimedia.org/wikipedia/commons/5/57/X_logo_2023_%28white%29.png', // Ganti dengan URL gambar Twitter Anda
+                                      //         height:
+                                      //             24.0, // Sesuaikan ukuran gambar
+                                      //         width: 24.0,
+                                      //         color: Colors
+                                      //             .white, // Sesuaikan warna gambar
+                                      //       ),
+                                      //       label: const Text("Login with X"),
+                                      //       onPressed: () {
+                                      //         controller.signInWithTwitter();
+                                      //       },
+                                      //       style: ElevatedButton.styleFrom(
+                                      //         primary: Colors
+                                      //             .blue, // Sesuaikan warna tombol
+                                      //         shape: RoundedRectangleBorder(
+                                      //           borderRadius:
+                                      //               BorderRadius.circular(32.0),
+                                      //         ),
+                                      //       ),
+                                      //     ),
+                                      //   ],
+                                      // ),
                                       Padding(
                                         padding: const EdgeInsets.fromLTRB(
                                             8, 18, 8, 0),

@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:livescore/routes/pages_names.dart';
 import 'package:livescore/screen/auth/auth_binding.dart';
 import 'package:livescore/screen/auth/auth_screen.dart';
+import 'package:livescore/screen/home/admin/admin_screen.dart';
 import 'package:livescore/screen/home/explore/explore_binding.dart';
 import 'package:livescore/screen/home/explore/explore_screen.dart';
 import 'package:livescore/screen/home/home_binding.dart';
@@ -61,6 +62,12 @@ class PageRoutes {
     GetPage(
       name: PageName.match,
       page: () => MatchPage(),
+      transition: Transition.cupertino,
+      transitionDuration: const Duration(milliseconds: 250),
+    ),
+    GetPage(
+      name: PageName.admin,
+      page: () => AdminPage(),
       transition: Transition.cupertino,
       transitionDuration: const Duration(milliseconds: 250),
     ),
