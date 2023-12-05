@@ -196,6 +196,18 @@ class AdminPage extends GetView<AdminController> {
         children: <Widget>[
           Column(
             children: [
+              Row(
+                children: [
+                  Text(
+                    'Admin Panel',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: AppFonts().primaryFont,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w400),
+                  ),
+                ],
+              ),
               Container(
                 height: null,
                 child: Obx(

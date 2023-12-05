@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:livescore/constant/fonts.dart';
 import 'package:livescore/screen/home/admin/components/admin_news_modal.dart';
 import 'package:livescore/services/appwrite_handler.dart';
@@ -26,11 +27,11 @@ class AdminNewsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ClientController db = Get.put(ClientController());
-    // final inputDateFormat = DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-    // final outputDateFormat = DateFormat("EEEE, d MMMM yyyy");
+    final inputDateFormat = DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+    final outputDateFormat = DateFormat("EEEE, d MMMM yyyy");
 
-    // final inputDate = inputDateFormat.parse(date);
-    // final outputDateString = outputDateFormat.format(inputDate);
+    final inputDate = inputDateFormat.parse(date);
+    final outputDateString = outputDateFormat.format(inputDate);
 
     return GestureDetector(
       onTap: () => AdminNewsModal(
@@ -58,7 +59,9 @@ class AdminNewsItem extends StatelessWidget {
                           return Text('No image data available');
                         } else {
                           return Image.memory(
-                              Uint8List.fromList(snapshot.data!));
+                            Uint8List.fromList(snapshot.data!),
+                            fit: BoxFit.cover,
+                          );
                         }
                       },
                     ),
@@ -84,7 +87,7 @@ class AdminNewsItem extends StatelessWidget {
                       SizedBox(
                         height: 8,
                       ),
-                      Text(date,
+                      Text(outputDateString,
                           style: TextStyle(
                               color: Colors.white,
                               fontFamily: AppFonts().primaryFont,
