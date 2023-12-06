@@ -22,6 +22,7 @@ class AdminPage extends GetView<AdminController> {
     return Scaffold(
       backgroundColor: const Color(0xFF181829),
       floatingActionButton: FloatingActionButton(
+          backgroundColor: Color.fromARGB(255, 60, 125, 255),
           child: Icon(IconlyBold.plus),
           onPressed: () {
             showModalBottomSheet(
@@ -57,7 +58,7 @@ class AdminPage extends GetView<AdminController> {
                             child: AppTextField(
                                 controller: controller.nameController,
                                 text: 'Title',
-                                icon: IconlyLight.arrow_right,
+                                icon: IconlyLight.paper,
                                 color: Color(0xFF181829)),
                           ),
                           Padding(
@@ -65,7 +66,7 @@ class AdminPage extends GetView<AdminController> {
                             child: AppTextField(
                                 controller: controller.descriptionController,
                                 text: 'Description',
-                                icon: IconlyLight.arrow_right,
+                                icon: IconlyLight.edit,
                                 color: Color(0xFF181829)),
                           ),
                           Padding(
@@ -74,112 +75,123 @@ class AdminPage extends GetView<AdminController> {
                                 context: context,
                                 controller: controller.dateController,
                                 text: 'Date',
-                                icon: IconlyLight.arrow_right,
+                                icon: IconlyLight.calendar,
                                 color: Color(0xFF181829)),
                           ),
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(8, 18, 8, 0),
-                            child: SizedBox(
-                              width: double.infinity,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  showModalBottomSheet(
-                                      context: context,
-                                      backgroundColor: const Color(0xFF222232),
-                                      builder: (context) {
-                                        return SingleChildScrollView(
-                                          child: Padding(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                24, 18, 24, 24),
-                                            child: Row(children: [
-                                              IconButton(
-                                                  color: Colors.white,
-                                                  onPressed: () async {
-                                                    await controller.takeImage(
-                                                        ImageSource.gallery,
-                                                        pickedFile,
-                                                        id);
-                                                  },
-                                                  icon: Icon(IconlyBold.image)),
-                                              IconButton(
-                                                  color: Colors.white,
-                                                  onPressed: () async {
-                                                    await controller.takeImage(
-                                                        ImageSource.camera,
-                                                        pickedFile,
-                                                        id);
-                                                  },
-                                                  icon: Icon(IconlyBold.camera))
-                                            ]),
-                                          ),
+                            padding: const EdgeInsets.only(top: 24),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      showModalBottomSheet(
+                                          context: context,
+                                          backgroundColor:
+                                              const Color(0xFF222232),
+                                          builder: (context) {
+                                            return SingleChildScrollView(
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.fromLTRB(
+                                                        24, 18, 24, 24),
+                                                child: Row(children: [
+                                                  IconButton(
+                                                      color: Colors.white,
+                                                      onPressed: () async {
+                                                        await controller
+                                                            .takeImage(
+                                                                ImageSource
+                                                                    .gallery,
+                                                                pickedFile,
+                                                                id);
+                                                      },
+                                                      icon: Icon(
+                                                          IconlyBold.image)),
+                                                  IconButton(
+                                                      color: Colors.white,
+                                                      onPressed: () async {
+                                                        await controller
+                                                            .takeImage(
+                                                                ImageSource
+                                                                    .camera,
+                                                                pickedFile,
+                                                                id);
+                                                      },
+                                                      icon: Icon(
+                                                          IconlyBold.camera))
+                                                ]),
+                                              ),
+                                            );
+                                          });
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      padding: const EdgeInsets.all(20),
+                                      backgroundColor:
+                                          const Color.fromARGB(255, 17, 37, 76),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(16),
+                                      ),
+                                    ),
+                                    child: Text(
+                                      'Upload Image',
+                                      style: TextStyle(
+                                        fontFamily: AppFonts().primaryFont,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(width: 18),
+                                Expanded(
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      if (controller.nameController.text.isNotEmpty &&
+                                          controller.descriptionController.text
+                                              .isNotEmpty &&
+                                          controller
+                                              .dateController.text.isNotEmpty) {
+                                        Map<String, dynamic> data = {
+                                          'name':
+                                              controller.nameController.text,
+                                          'description': controller
+                                              .descriptionController.text,
+                                          'date':
+                                              controller.dateController.text,
+                                          'imgId': id
+                                        };
+                                        controller.db.inputArticle(data);
+                                      } else {
+                                        Get.snackbar(
+                                          'Input Error',
+                                          'Some form are missing',
                                         );
-                                      });
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  padding: const EdgeInsets.all(20),
-                                  backgroundColor: const Color(0xFF246BFD),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(16),
+                                      }
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      padding: const EdgeInsets.all(20),
+                                      backgroundColor:
+                                          const Color.fromARGB(255, 17, 37, 76),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(16),
+                                      ),
+                                    ),
+                                    child: Text(
+                                      'Upload Article',
+                                      style: TextStyle(
+                                        fontFamily: AppFonts().primaryFont,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                                child: Text(
-                                  'Upload Image',
-                                  style: TextStyle(
-                                    fontFamily: AppFonts().primaryFont,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
+                                )
+                              ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(8, 18, 8, 0),
-                            child: SizedBox(
-                              width: double.infinity,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  if (controller
-                                          .nameController.text.isNotEmpty &&
-                                      controller.descriptionController.text
-                                          .isNotEmpty &&
-                                      controller
-                                          .dateController.text.isNotEmpty) {
-                                    Map<String, dynamic> data = {
-                                      'name': controller.nameController.text,
-                                      'description':
-                                          controller.descriptionController.text,
-                                      'date': controller.dateController.text,
-                                      'imgId': id
-                                    };
-                                    controller.db.inputArticle(data);
-                                  } else {
-                                    Get.snackbar(
-                                      'Input Error',
-                                      'Some form are missing',
-                                    );
-                                  }
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  padding: const EdgeInsets.all(20),
-                                  backgroundColor: const Color(0xFF246BFD),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(16),
-                                  ),
-                                ),
-                                child: Text(
-                                  'Upload Article',
-                                  style: TextStyle(
-                                    fontFamily: AppFonts().primaryFont,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
                         ]),
                   ),
                 );
@@ -196,17 +208,20 @@ class AdminPage extends GetView<AdminController> {
         children: <Widget>[
           Column(
             children: [
-              Row(
-                children: [
-                  Text(
-                    'Admin Panel',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: AppFonts().primaryFont,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w400),
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.only(bottom: 24),
+                child: Row(
+                  children: [
+                    Text(
+                      'Admin Panel',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: AppFonts().primaryFont,
+                          fontSize: 24,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ],
+                ),
               ),
               Container(
                 height: null,
@@ -228,8 +243,17 @@ class AdminPage extends GetView<AdminController> {
                             );
                           },
                         )
-                      : Center(
-                          child: Text('No articles available'),
+                      : Container(
+                          alignment: Alignment.center,
+                          height: MediaQuery.of(context).size.height - 242,
+                          child: Text(
+                            'No articles available',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: AppFonts().primaryFont,
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                 ),
               )

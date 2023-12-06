@@ -71,22 +71,20 @@ class ExplorePage extends GetView<ExploreController> {
                         );
                       },
                     )
-                  : Center(
-                      child: Text('No articles available'),
+                  : Container(
+                      alignment: Alignment.center,
+                      height: 480,
+                      child: Text(
+                        'No articles available',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: AppFonts().primaryFont,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(8.0, 18, 8.0, 18),
-            child: Text(
-              'Trending News',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontFamily: AppFonts().primaryFont,
-                  fontWeight: FontWeight.w600),
-            ),
-          )
         ],
       ),
     );

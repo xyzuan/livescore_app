@@ -24,12 +24,12 @@ Widget AppDateField({
                 context: context,
                 initialDate: DateTime.now(),
                 firstDate: DateTime(2000),
-                lastDate: DateTime(2101),
+                lastDate: DateTime(2024),
               );
 
               if (selectedDate != null) {
                 controller?.text =
-                    DateFormat('yyyy-MM-dd').format(selectedDate);
+                    DateFormat('EEEE, d MMMM yyyy').format(selectedDate);
               }
             },
             style: TextStyle(
