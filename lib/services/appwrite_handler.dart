@@ -1,5 +1,4 @@
 import 'dart:io' as io;
-import 'package:http/http.dart' as http;
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
@@ -31,8 +30,8 @@ class ClientController extends GetxController {
   Future<void> deleteArticle(String documentId) async {
     try {
       await databases!.deleteDocument(
-        collectionId: articlesCollectionId,
         databaseId: dbId,
+        collectionId: articlesCollectionId,
         documentId: documentId,
       );
 
